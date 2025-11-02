@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>서울대 안양수목원 - 이용안내</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans KR', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2d5016 0%, #4a7c29 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1rem;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        .content {
+            padding: 40px 30px;
+        }
+
+        .top-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .link-btn {
+            display: block;
+            padding: 18px 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .link-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .link-btn:active {
+            transform: translateY(0);
+        }
+
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .btn {
+            display: block;
+            padding: 18px 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #4a7c29 0%, #6ba83d 100%);
+            box-shadow: 0 4px 15px rgba(74, 124, 41, 0.3);
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 6px 20px rgba(74, 124, 41, 0.4);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            box-shadow: 0 4px 15px rgba(240, 147, 251, 0.3);
+        }
+
+        .btn-secondary:hover {
+            box-shadow: 0 6px 20px rgba(240, 147, 251, 0.4);
+        }
+
+        .description {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+        }
+
+        .description h2 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #2d5016;
+        }
+
+        .description p {
+            margin-bottom: 12px;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .visit-info {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+
+        .visit-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+            color: #2d5016;
+        }
+
+        .visit-info p {
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        .visit-info p:last-child {
+            margin-bottom: 0;
+        }
+
+        .info-highlight {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+
+        .info-highlight p {
+            margin: 5px 0;
+            color: #856404;
+            font-weight: 500;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .feature-item {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid #e9ecef;
+        }
+
+        .feature-item span {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .feature-item p {
+            font-size: 0.9rem;
+            color: #666;
+            margin: 0;
+        }
+
+        .ad-space {
+            background: #f8f9fa;
+            padding: 30px 20px;
+            margin: 0;
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-top: 1px solid #e9ecef;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .ad-container {
+            width: 100%;
+            max-width: 100%;
+            min-height: auto;
+            background: transparent;
+            border: none;
+            display: block;
+        }
+
+        .shortcut-section {
+            background: white;
+            padding: 30px;
+            text-align: center;
+            border-top: 1px solid #e9ecef;
+        }
+
+        .shortcut-btn {
+            display: inline-block;
+            padding: 20px 50px;
+            background: linear-gradient(135deg, #4a7c29 0%, #6ba83d 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(74, 124, 41, 0.4);
+            animation: pulse 2s infinite;
+        }
+
+        .shortcut-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(74, 124, 41, 0.5);
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .scroll-target {
+            scroll-margin-top: 400px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #999;
+            font-size: 0.9rem;
+            border-top: 1px solid #e9ecef;
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            .header h1 {
+                font-size: 1.6rem;
+            }
+
+            .header p {
+                font-size: 0.9rem;
+            }
+
+            .content {
+                padding: 30px 20px;
+            }
+
+            .link-btn {
+                padding: 16px 25px;
+                font-size: 1rem;
+            }
+
+            .btn {
+                padding: 16px 25px;
+                font-size: 1rem;
+            }
+
+            .description h2 {
+                font-size: 1.1rem;
+            }
+
+            .description p {
+                font-size: 0.9rem;
+            }
+
+            .visit-info h3 {
+                font-size: 1.1rem;
+            }
+
+            .visit-info p {
+                font-size: 0.9rem;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .shortcut-section {
+                padding: 20px;
+            }
+
+            .shortcut-btn {
+                padding: 16px 30px;
+                font-size: 1rem;
+            }
+
+            .ad-space {
+                padding: 20px 10px;
+                min-height: 250px;
+            }
+
+            .ad-container {
+                min-height: 200px;
+            }
+
+            .scroll-target {
+                scroll-margin-top: 350px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌳 서울대 안양수목원</h1>
+            <p>이용 안내 및 프로그램</p>
+        </div>
+
+        <div class="content">
+            <!-- 상단 3개 링크 버튼 -->
+            <div class="top-buttons">
+                <a href="#shortcut-target" class="link-btn">🚗 주차장 확인</a>
+                <a href="#shortcut-target" class="link-btn">📅 프로그램 예약하기</a>
+                <a href="#shortcut-target" class="link-btn">🗺️ 코스 보기</a>
+            </div>
+
+            <!-- 간단한 설명 -->
+            <div class="description">
+                <h2>이용 안내</h2>
+                <p>서울대 안양수목원은 모든 방문객에게 무료로 개방되며, 다양한 교육 프로그램과 단체 관람 서비스를 제공하고 있습니다.</p>
+                <p>편안하고 안전한 관람을 위해 사전 예약 및 안내사항을 꼭 확인해주세요.</p>
+                
+                <div class="features">
+                    <div class="feature-item">
+                        <span>💰</span>
+                        <p>무료 입장</p>
+                    </div>
+                    <div class="feature-item">
+                        <span>👥</span>
+                        <p>단체 관람</p>
+                    </div>
+                    <div class="feature-item">
+                        <span>📚</span>
+                        <p>교육 프로그램</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 주요 안내사항 -->
+            <div class="visit-info">
+                <h3>📋 주요 안내사항</h3>
+                <div class="info-highlight">
+                    <p>🕐 운영시간: 화~일요일 09:00 - 18:00</p>
+                    <p>🚫 휴관일: 매주 월요일, 설날·추석 당일</p>
+                    <p>📞 문의전화: 031-123-4567</p>
+                </div>
+                <p><strong>이용요금:</strong> 전 연령 무료</p>
+                <p><strong>단체관람:</strong> 20명 이상 사전 예약 필수</p>
+                <p><strong>교육프로그램:</strong> 온라인 사전 신청</p>
+            </div>
+        </div>
+
+        <!-- 광고 공간 -->
+        <div class="ad-space" id="ad-section">
+            <div class="ad-container">
+                <!-- 애드센스 광고 -->
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9447899790436644"
+                     crossorigin="anonymous"></script>
+                <!-- 하단 -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-9447899790436644"
+                     data-ad-slot="6908995644"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        </div>
+
+        <!-- 바로가기 버튼 -->
+        <div class="shortcut-section">
+            <div id="shortcut-target" class="scroll-target"></div>
+            <a href="#" class="shortcut-btn">
+                ⬇️ 상세 정보 바로가기 ⬇️
+            </a>
+        </div>
+
+        <div class="footer">
+            <p>© 2025 서울대학교 안양수목원. All rights reserved.</p>
+        </div>
+    </div>
+
+    <script>
+        // 모든 앵커 링크에 부드러운 스크롤 적용
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                
+                if (targetElement) {
+                    targetElement.scrollIntoView({ 
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
