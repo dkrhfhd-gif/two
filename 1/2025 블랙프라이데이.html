@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="2025 블랙프라이데이 브랜드별 할인 총정리 - 삼성, LG, 무신사, 애플, 다이슨 최저가 정보">
+    <meta name="keywords" content="블랙프라이데이, 삼성, LG, 무신사, 애플, 다이슨, 할인, 특가, 2025">
+    <title>2025 블랙프라이데이 브랜드별 할인 총정리 | 최저가 비교</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* 헤더 */
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 50px;
+            padding: 40px 20px;
+        }
+        
+        .header h1 {
+            font-size: 2.8em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: fadeInDown 0.8s ease;
+        }
+        
+        .header .subtitle {
+            font-size: 1.3em;
+            opacity: 0.95;
+            animation: fadeInUp 0.8s ease;
+        }
+        
+        .header .badge {
+            display: inline-block;
+            background: #ff3838;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 0.9em;
+            font-weight: bold;
+            margin-top: 15px;
+            animation: pulse 2s infinite;
+        }
+        
+        /* 카드 그리드 */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        /* 카드 스타일 */
+        .brand-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 0.6s ease forwards;
+            opacity: 0;
+        }
+        
+        .brand-card:nth-child(1) { animation-delay: 0.1s; }
+        .brand-card:nth-child(2) { animation-delay: 0.2s; }
+        .brand-card:nth-child(3) { animation-delay: 0.3s; }
+        .brand-card:nth-child(4) { animation-delay: 0.4s; }
+        .brand-card:nth-child(5) { animation-delay: 0.5s; }
+        
+        .brand-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+        
+        .brand-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+        
+        /* 브랜드별 색상 */
+        .brand-card.samsung::before { background: linear-gradient(90deg, #1428A0, #034EA2); }
+        .brand-card.lg::before { background: linear-gradient(90deg, #A50034, #E4003A); }
+        .brand-card.musinsa::before { background: linear-gradient(90deg, #000000, #333333); }
+        .brand-card.apple::before { background: linear-gradient(90deg, #000000, #555555); }
+        .brand-card.dyson::before { background: linear-gradient(90deg, #6B0091, #9B00C8); }
+        
+        .brand-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        
+        .brand-logo {
+            font-size: 2em;
+            font-weight: bold;
+        }
+        
+        .brand-card.samsung .brand-logo { color: #034EA2; }
+        .brand-card.lg .brand-logo { color: #A50034; }
+        .brand-card.musinsa .brand-logo { color: #000000; }
+        .brand-card.apple .brand-logo { color: #000000; }
+        .brand-card.dyson .brand-logo { color: #6B0091; }
+        
+        .discount-badge {
+            background: #ff3838;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.85em;
+            font-weight: bold;
+        }
+        
+        .brand-title {
+            font-size: 1.4em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .products-list {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+        
+        .products-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f0f0;
+            color: #666;
+            font-size: 0.95em;
+            display: flex;
+            align-items: center;
+        }
+        
+        .products-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .products-list li::before {
+            content: '✓';
+            color: #667eea;
+            font-weight: bold;
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+        
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px solid #f0f0f0;
+        }
+        
+        .price-info {
+            font-size: 0.9em;
+            color: #999;
+        }
+        
+        .price-highlight {
+            font-size: 1.3em;
+            color: #ff3838;
+            font-weight: bold;
+        }
+        
+        .view-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .view-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        /* 푸터 */
+        .footer {
+            text-align: center;
+            color: white;
+            padding: 30px;
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+        
+        .footer-info {
+            margin-bottom: 15px;
+        }
+        
+        .timer {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .timer-title {
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            color: white;
+        }
+        
+        .timer-display {
+            font-size: 2em;
+            font-weight: bold;
+            color: #FFD700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        /* 애니메이션 */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        /* 반응형 */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .header .subtitle {
+                font-size: 1em;
+            }
+            
+            .cards-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .brand-card {
+                padding: 20px;
+            }
+            
+            .timer-display {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 헤더 -->
+        <div class="header">
+            <h1>🔥 2025 블랙프라이데이 🔥</h1>
+            <p class="subtitle">브랜드별 역대급 할인 총정리</p>
+            <span class="badge">최대 60% 할인</span>
+        </div>
+        
+        <!-- 타이머 -->
+        <div class="timer">
+            <div class="timer-title">⏰ 블랙프라이데이 D-DAY</div>
+            <div class="timer-display" id="countdown">00일 00시간 00분</div>
+        </div>
+        
+        <!-- 카드 그리드 -->
+        <div class="cards-grid">
+            <!-- 삼성 카드 -->
+            <div class="brand-card samsung" onclick="location.href='https://info.keypoints.kr/2025-%eb%b8%94%eb%9e%99%ed%94%84%eb%9d%bc%ec%9d%b4%eb%8d%b0%ec%9d%b4-%ec%82%bc%ec%84%b1-%ea%b0%80%ec%a0%84-%ed%95%a0%ec%9d%b8-%ec%b4%9d%ec%a0%95%eb%a6%ac-%eb%83%89%ec%9e%a5%ea%b3%a0%c2%b7tv%c2%b7/'">
+                <div class="brand-header">
+                    <div class="brand-logo">SAMSUNG</div>
+                    <div class="discount-badge">최대 40%</div>
+                </div>
+                <h3 class="brand-title">삼성 가전 할인 총정리</h3>
+                <ul class="products-list">
+                    <li>비스포크 냉장고 최저가</li>
+                    <li>그랑데 세탁기 특가</li>
+                    <li>네오 QLED TV 할인</li>
+                    <li>갤럭시 스마트폰 혜택</li>
+                </ul>
+                <div class="card-footer">
+                    <div class="price-info">
+                        <div class="price-highlight">50만원대~</div>
+                        추가 카드 할인
+                    </div>
+                    <a href="https://info.keypoints.kr/2025-%eb%b8%94%eb%9e%99%ed%94%84%eb%9d%bc%ec%9d%b4%eb%8d%b0%ec%9d%b4-%ec%82%bc%ec%84%b1-%ea%b0%80%ec%a0%84-%ed%95%a0%ec%9d%b8-%ec%b4%9d%ec%a0%95%eb%a6%ac-%eb%83%89%ec%9e%a5%ea%b3%a0%c2%b7tv%c2%b7/" class="view-button">자세히 보기 →</a>
+                </div>
+            </div>
+            
+            <!-- LG 카드 -->
+            <div class="brand-card lg" onclick="location.href='https://info.keypoints.kr/lg-%ed%8a%b8%eb%a1%ac-%ec%84%b8%ed%83%81%ea%b8%b0%c2%b7%ea%b1%b4%ec%a1%b0%ea%b8%b0%c2%b7%ea%b0%80%ec%a0%84%ec%a0%9c%ed%92%88-%eb%b8%94%eb%9e%99%ed%94%84%eb%9d%bc%ec%9d%b4%eb%8d%b0%ec%9d%b4-%ea%b0%80/'">
+                <div class="brand-header">
+                    <div class="brand-logo">LG</div>
+                    <div class="discount-badge">최대 45%</div>
+                </div>
+                <h3 class="brand-title">LG 트롬·가전 가격 비교</h3>
+                <ul class="products-list">
+                    <li>트롬 세탁기·건조기 세트</li>
+                    <li>올레드 TV 프리미엄</li>
+                    <li>디오스 냉장고 신제품</li>
+                    <li>LG 공기청정기</li>
+                </ul>
+                <div class="card-footer">
+                    <div class="price-info">
+                        <div class="price-highlight">60만원대~</div>
+                        무이자 12개월
+                    </div>
+                    <a href="https://info.keypoints.kr/lg-%ed%8a%b8%eb%a1%ac-%ec%84%b8%ed%83%81%ea%b8%b0%c2%b7%ea%b1%b4%ec%a1%b0%ea%b8%b0%c2%b7%ea%b0%80%ec%a0%84%ec%a0%9c%ed%92%88-%eb%b8%94%eb%9e%99%ed%94%84%eb%9d%bc%ec%9d%b4%eb%8d%b0%ec%9d%b4-%ea%b0%80/" class="view-button">자세히 보기 →</a>
+                </div>
+            </div>
+            
+            <!-- 무신사 카드 -->
+            <div class="brand-card musinsa" onclick="location.href='https://info.keypoints.kr/%eb%ac%b4%ec%8b%a0%ec%82%ac-%eb%b8%94%eb%9e%99%ed%94%84%eb%9d%bc%ec%9d%b4%eb%8d%b0%ec%9d%b4-2025-%eb%b8%8c%eb%9e%9c%eb%93%9c%eb%b3%84-%ed%95%a0%ec%9d%b8%ec%9c%a8-%ec%bf%a0%ed%8f%b0-%ec%b4%9d/'">
+                <div class="brand-header">
+                    <div class="brand-logo">MUSINSA</div>
+                    <div class="discount-badge">최대 70%</div>
+                </div>
+                <h3 class="brand-title">무신사 브랜드별 할인</h3>
+                <ul class="products-list">
+                    <li>겨울 패딩·아우터 특가</li>
+                    <li>브랜드관 쿠폰 중복</li>
+                    <li>스탠다드 베스트 아이템</li>
+                    <li>운동화·스니커즈 득템</li>
+                </ul>
+                <div class="card-footer">
+                    <div class="price-info">
+                        <div class="price-highlight">3만원대~</div>
+                        추가 쿠폰 5천원
+                    </div>
+                    <a href="https://info.keypoints.kr/%eb%ac%b4%ec%8b%a0%ec%82%ac-%eb%b8%94%eb%9e%99%ed%94%84%eb%9d%bc%ec%9d%b4%eb%8d%b0%ec%9d%b4-2025-%eb%b8%8c%eb%9e%9c%eb%93%9c%eb%b3%84-%ed%95%a0%ec%9d%b8%ec%9c%a8-%ec%bf%a0%ed%8f%b0-%ec%b4%9d/" class="view-button">자세히 보기 →</a>
+                </div>
+            </div>
+            
+            <!-- 애플 카드 -->
+            <div class="brand-card apple" onclick="location.href='https://info.keypoints.kr/%ec%95%a0%ed%94%8c-%eb%b8%94%eb%9e%99%ed%94%84%eb%9d%bc%ec%9d%b4%eb%8d%b0%ec%9d%b4-2025-%ec%95%84%ec%9d%b4%ed%8f%b0%c2%b7%eb%a7%a5%eb%b6%81%c2%b7%ec%97%90%ec%96%b4%ed%8c%9f-%ed%95%a0%ec%9d%b8/'">
+                <div class="brand-header">
+                    <div class="brand-logo">Apple</div>
+                    <div class="discount-badge">최대 30%</div>
+                </div>
+                <h3 class="brand-title">애플 제품 할인 총정리</h3>
+                <ul class="products-list">
+                    <li>아이폰 16 Pro 통신사 비교</li>
+                    <li>맥북 에어 M3 최저가</li>
+                    <li>에어팟 프로 2세대</li>
+                    <li>아이패드·애플워치</li>
+                </ul>
+                <div class="card-footer">
+                    <div class="price-info">
+                        <div class="price-highlight">80만원대~</div>
+                        공시지원금 최대
+                    </div>
+                    <a href="https://info.keypoints.kr/%ec%95%a0%ed%94%8c-%eb%b8%94%eb%9e%99%ed%94%84%eb%9d%bc%ec%9d%b4%eb%8d%b0%ec%9d%b4-2025-%ec%95%84%ec%9d%b4%ed%8f%b0%c2%b7%eb%a7%a5%eb%b6%81%c2%b7%ec%97%90%ec%96%b4%ed%8c%9f-%ed%95%a0%ec%9d%b8/" class="view-button">자세히 보기 →</a>
+                </div>
+            </div>
+            
+            <!-- 다이슨 카드 -->
+            <div class="brand-card dyson" onclick="location.href='https://info.keypoints.kr/%eb%8b%a4%ec%9d%b4%ec%8a%a8-%eb%b8%94%eb%9e%99%ed%94%84%eb%9d%bc%ec%9d%b4%eb%8d%b0%ec%9d%b4-2025-%ec%b2%ad%ec%86%8c%ea%b8%b0%c2%b7%ec%97%90%ec%96%b4%eb%9e%a9%c2%b7%ea%b3%b5%ea%b8%b0%ec%b2%ad/'">
+                <div class="brand-header">
+                    <div class="brand-logo">dyson</div>
+                    <div class="discount-badge">최대 50%</div>
+                </div>
+                <h3 class="brand-title">다이슨 프리미엄 가전</h3>
+                <ul class="products-list">
+                    <li>V15 무선청소기 특가</li>
+                    <li>에어랩 멀티스타일러</li>
+                    <li>공기청정기 선풍기 겸용</li>
+                    <li>다이슨 헤어드라이어</li>
+                </ul>
+                <div class="card-footer">
+                    <div class="price-info">
+                        <div class="price-highlight">40만원대~</div>
+                        정품 보증 2년
+                    </div>
+                    <a href="https://info.keypoints.kr/%eb%8b%a4%ec%9d%b4%ec%8a%a8-%eb%b8%94%eb%9e%99%ed%94%84%eb%9d%bc%ec%9d%b4%eb%8d%b0%ec%9d%b4-2025-%ec%b2%ad%ec%86%8c%ea%b8%b0%c2%b7%ec%97%90%ec%96%b4%eb%9e%a9%c2%b7%ea%b3%b5%ea%b8%b0%ec%b2%ad/" class="view-button">자세히 보기 →</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 푸터 -->
+        <div class="footer">
+            <div class="footer-info">
+                <p>⚡ 실시간 가격 업데이트 중 ⚡</p>
+                <p>📱 모바일에서도 최저가 확인 가능</p>
+            </div>
+            <p style="font-size: 0.85em; opacity: 0.8;">
+                * 가격은 실시간 변동될 수 있으며, 추가 할인 쿠폰 적용 시 더욱 저렴하게 구매 가능합니다.
+            </p>
+        </div>
+    </div>
+    
+    <script>
+        // 카운트다운 타이머 (블랙프라이데이 날짜로 설정)
+        function updateCountdown() {
+            const blackFriday = new Date('2025-11-28T00:00:00');
+            const now = new Date();
+            const diff = blackFriday - now;
+            
+            if (diff > 0) {
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                
+                document.getElementById('countdown').textContent = 
+                    `${days}일 ${hours}시간 ${minutes}분`;
+            } else {
+                document.getElementById('countdown').textContent = '진행중! 🎉';
+            }
+        }
+        
+        updateCountdown();
+        setInterval(updateCountdown, 60000); // 1분마다 업데이트
+        
+        // 카드 클릭 트래킹 (선택사항)
+        document.querySelectorAll('.brand-card').forEach(card => {
+            card.addEventListener('click', function(e) {
+                if (e.target.tagName !== 'A') {
+                    const link = this.querySelector('.view-button');
+                    if (link) {
+                        window.location.href = link.href;
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
